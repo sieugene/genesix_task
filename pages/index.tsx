@@ -14,7 +14,7 @@ const Home: FC<Props> = ({ articles }) => {
   return (
     <>
       <Head>
-        <title>Create Next App</title>
+        <title>Главная</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

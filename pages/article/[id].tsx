@@ -4,6 +4,7 @@ import { Article } from "../../Schemas/ArticleSchema";
 import { getArticle } from "../../Services";
 import Link from "next/link";
 import style from "../../styles/Article.module.scss";
+import Head from "next/head";
 
 type Props = {
   article: Article;
@@ -11,19 +12,25 @@ type Props = {
 
 const ArticlePage: FC<Props> = ({ article }) => {
   return (
-    <div className="container">
-      <div className={style.article}>
-        <h2>
-          <Link href={`/`}>
-            <a className={style.back}>{"<"}</a>
-          </Link>
+    <>
+      <Head>
+        <title>{article.title}</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className="container">
+        <div className={style.article}>
+          <h2>
+            <Link href={`/`}>
+              <a className={style.back}>{"<"}</a>
+            </Link>
 
-          {article.title}
-        </h2>
-        <p>{article.description}</p>
-        <img src={article.image} alt={article.title} />
+            {article.title}
+          </h2>
+          <p>{article.description}</p>
+          <img src={article.image} alt={article.title} />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
