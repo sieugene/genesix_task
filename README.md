@@ -1,3 +1,21 @@
+# Simple next blog.
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+"Implement the rest-an endpoint that would display page data in the form
+GET / api/articles/: id (where: id is the article id ) the data itself is returned in this form
+{
+"name”:"Article title’,
+“description”: "Lorem ipsum”,
+"image”:”http://....”
+}
+
+/ articles-list of articles
+/articles/: id-article by id
+
+
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
