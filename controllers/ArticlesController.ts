@@ -1,22 +1,30 @@
 const fs = require("fs");
 const path = require("path");
 import { Article, Articles as ArticlesSchema } from "../Schemas/ArticleSchema";
+import staticJSON from "../data/index.json";
 const filePath = path.join(process.env.ROOT, "data", "index.json");
-
+const isProd = process.env.NODE_ENV === "production";
 class Articles {
   getAll(): Promise<ArticlesSchema> {
     return new Promise((resolve, reject) => {
-      fs.readFile(filePath, function (err, data) {
-        if (err) {
-          setTimeout(() => {
-            reject(err);
-          }, 1500);
-        } else {
-          setTimeout(() => {
-            resolve(JSON.parse(data));
-          }, 1500);
-        }
-      });
+      if (!isProd) {
+        fs.readFile(filePath, function (err, data) {
+          if (err) {
+            setTimeout(() => {
+              reject(err);
+            }, 1500);
+          } else {
+            setTimeout(() => {
+              resolve(JSON.parse(data));
+            }, 1500);
+          }
+        });
+      } else {
+        const data = staticJSON;
+        setTimeout(() => {
+          resolve(data as ArticlesSchema);
+        }, 1500);
+      }
     });
   }
   async getOne(id: string): Promise<Article> {
