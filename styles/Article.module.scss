@@ -1,0 +1,22 @@
+.article {
+  h2 {
+  }
+  img {
+    max-height: 50vh;
+  }
+  .back {
+    position: relative;
+    margin-right: 15px;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 20px;
+      background: black;
+      height: 2px;
+      bottom: 12px;
+      left: 4px;
+    }
+  }
+}

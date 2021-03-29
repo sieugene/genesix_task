@@ -2,6 +2,8 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { FC } from "react";
 import { Article } from "../../Schemas/ArticleSchema";
 import { getAllArticles, getArticle } from "../../Services";
+import Link from "next/link";
+import style from "../../styles/Article.module.scss";
 
 type Props = {
   article: Article;
@@ -9,15 +11,19 @@ type Props = {
 
 const ArticlePage: FC<Props> = ({ article }) => {
   return (
-    <>
-      {article && (
-        <div>
-          <h2>{article.title}</h2>
-          <p>{article.description}</p>
-          <img src={article.image} alt={article.title} />
-        </div>
-      )}
-    </>
+    <div className="container">
+      <div className={style.article}>
+        <h2>
+          <Link href={`/`}>
+            <a className={style.back}>{"<"}</a>
+          </Link>
+
+          {article.title}
+        </h2>
+        <p>{article.description}</p>
+        <img src={article.image} alt={article.title} />
+      </div>
+    </div>
   );
 };
 

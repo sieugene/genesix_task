@@ -1,0 +1,24 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s all ease;
+  margin-bottom: 10px;
+  padding: 10px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  cursor: pointer;
+  border: 1px solid #d5cfcf;
+  &:hover {
+    -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    border: 1px solid transparent;
+  }
+  &__text {
+    font-weight: 200;
+  }
+  &__image {
+    max-width: 226px;
+  }
+}
