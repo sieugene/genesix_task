@@ -14,3 +14,30 @@ a {
 * {
   box-sizing: border-box;
 }
+.container {
+  padding: 0 15px;
+  justify-content: center;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+}
+@media (min-width: 575.98px) {
+  .container {
+    padding: 0 calc(50% - 270px);
+  }
+}
+@media (min-width: 767.98px) {
+  .container {
+    padding: 0 calc(50% - 360px);
+  }
+}
+@media (min-width: 991.98px) {
+  .container {
+    padding: 0 calc(50% - 480px);
+  }
+}
+@media (min-width: 1199.98px) {
+  .container {
+    padding: 0 calc(50% - 590px);
+  }
+}
