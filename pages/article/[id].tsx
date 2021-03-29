@@ -1,7 +1,7 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { FC } from "react";
 import { Article } from "../../Schemas/ArticleSchema";
-import { getAllArticles, getArticle } from "../../Services";
+import { getArticle } from "../../Services";
 import Link from "next/link";
 import style from "../../styles/Article.module.scss";
 
@@ -27,26 +27,17 @@ const ArticlePage: FC<Props> = ({ article }) => {
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const articles = await getAllArticles();
-  const paths =
-    articles?.length &&
-    articles.map((a) => {
-      return {
-        params: { id: a.id.toString() },
-      };
-    });
-  return {
-    paths: paths ?? [{ params: { id: "1" } }],
-    fallback: false,
-  };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const { id } = params;
-
   const article = id && (await getArticle(id as string));
-
+  if (!article) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
   return { props: { article: article ?? null } };
 };
 

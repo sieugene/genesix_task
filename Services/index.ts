@@ -16,6 +16,6 @@ export const getArticle = async (id: string): Promise<Article> => {
     const data: Promise<Article> = await response.json();
     return data;
   } catch (error) {
-    return error;
+    return undefined;
   }
 };
